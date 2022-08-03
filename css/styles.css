@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/*==========Google Fonts==========*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/*==========Rotação==========*/
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}
+
+/*==========Reset CSS==========*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*==========Root==========*/
+:root {
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
+}
+
+/*==========Body==========*/
+body {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top:  5rem;
+    padding-bottom: 5rem;
+}
+
+/*==========Card==========*/
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1.5rem;
+    color: rgb(88 199 250 / 0%);
+    cursor: pointer;
+    font-family: 'Poppins';
+}
+.card:hover::before, .card:hover::after {
+    animation: none;
+    opacity: 0;
+}
+.card::before {
+    content: "";
+    width: 104%;
+    height: 102%;
+    border-radius: 8px;
+    background-image: linear-gradient(var(--rotate), #65F707, #EA3DF2, #07F7CB);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2s linear infinite;
+}
+
+.card::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 6);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(var(--rotate), #65F707, #fff, #07F7CB);
+    opacity: 1;
+    transition: opacity .5s;
+    animation: spion 2s linear infinite;
+}
+
+/*==========Redes Sociais==========*/
+.social  {
+    font-size: 30px;
+    display: flex;
+    gap: 30px;
+}
+.social a {
+    color: #fff;
+}
+.uil-twitter:hover {
+    color: #EA3DF2;
+    transition: color 1s;
+}
+.uil-facebook:hover {
+    color: #07F7CB;
+    transition: color 1s;
+}
+.uil-instagram-alt:hover {
+    color: #65F707;
+    transition: color 1s;
+}
+.uil-youtube:hover {
+    color: #f08080;
+    transition: color 1s;
+}
+
+/*==========Animação==========*/
+@keyframes spin {
+    0% {
+       --rotate: 0deg; 
+    }
+    100% {
+        --rotate: 360deg;
+    }
+}
